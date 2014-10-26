@@ -1,6 +1,10 @@
 <?php if (!defined('APPLICATION')) exit(); ?>
 
+<?php $Configurations = $this->Data('Configurations'); ?>
 <?php $TargetDescriptions = $this->Data('TargetDescriptions'); ?>
+<?php $EditURLFormat = $this->Data('EditURLFormat'); ?>
+<?php $DeleteURLFormat = $this->Data('DeleteURLFormat'); ?>
+<?php $CreateURL = $this->Data('CreateURL'); ?>
 
 <h1>
 	<?= T('Advertisements'); ?>
@@ -23,7 +27,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php if (empty($this->Data('Configurations'))): ?>
+		<?php if (empty($Configurations)): ?>
 			<tr>
 				<td colspan="2">
 					<p class="Center">
@@ -34,11 +38,11 @@
 				</td>
 			</tr>
 		<?php endif; ?>
-		<?php foreach ($this->Data('Configurations') as $Configuration): ?>
+		<?php foreach ($Configurations as $Configuration): ?>
 			<?php $AdvertisementNetworkClass = $Configuration->GetAdNetwork(); ?>
 			<tr>
 				<td>
-					<a href="<?= htmlentities(sprintf($this->Data('EditURLFormat'), $Configuration->GetID())); ?>">
+					<a href="<?= htmlentities(sprintf($EditURLFormat, $Configuration->GetID())); ?>">
 						<?= htmlentities(method_exists($AdvertisementNetworkClass, 'GetNetworkName') ? $AdvertisementNetworkClass::GetNetworkName() : $AdvertisementNetworkClass); ?>
 					</a>
 				</td>
@@ -47,7 +51,7 @@
 					<?= htmlentities(array_key_exists($Configuration->GetTarget(), $TargetDescriptions) ? $TargetDescriptions[$Configuration->GetTarget()] : $Configuration->GetTarget()); ?>
 				</td>
 				<td class="Right">
-					<a href="<?= htmlentities(sprintf($this->Data('DeleteURLFormat'), $Configuration->GetID())); ?>" class="Button">
+					<a href="<?= htmlentities(sprintf($DeleteURLFormat, $Configuration->GetID())); ?>" class="Button">
 						<?= T('Remove'); ?>
 					</a>
 				</td>
@@ -59,7 +63,7 @@
 <br />
 
 <p>
-	<a href="<?= $this->Data('CreateURL'); ?>" class="Button">
+	<a href="<?= $CreateURL; ?>" class="Button">
 		<?= T('New Advertisement'); ?>
 	</a>
 </p>
