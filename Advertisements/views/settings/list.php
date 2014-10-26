@@ -1,5 +1,7 @@
 <?php if (!defined('APPLICATION')) exit(); ?>
 
+<?php $TargetDescriptions = $this->Data('TargetDescriptions'); ?>
+
 <h1>
 	<?= T('Advertisements'); ?>
 </h1>
@@ -42,7 +44,7 @@
 				</td>
 
 				<td>
-					<?= htmlentities($Configuration->GetTarget()); ?>
+					<?= htmlentities(array_key_exists($Configuration->GetTarget(), $TargetDescriptions) ? $TargetDescriptions[$Configuration->GetTarget()] : $Configuration->GetTarget()); ?>
 				</td>
 				<td class="Right">
 					<a href="<?= htmlentities(sprintf($this->Data('DeleteURLFormat'), $Configuration->GetID())); ?>" class="Button">

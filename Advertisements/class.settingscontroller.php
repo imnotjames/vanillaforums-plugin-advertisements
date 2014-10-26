@@ -4,9 +4,31 @@ class AdvertisementsPlugin_SettingsController {
 	private $Repository;
 	private $Renderer;
 
+	private $TargetDescriptions;
+
+
 	public function __construct(AdvertisementsPlugin_Repository $Repository, callable $Renderer) {
 		$this->Repository = $Repository;
 		$this->Renderer = $Renderer;
+
+		$this->TargetDescriptions = [
+			AdvertisementsPlugin_Configuration::TARGET_NONE =>                 T('Do Not Display'),
+
+			AdvertisementsPlugin_Configuration::TARGET_SCRIPT_HEAD =>          T('Include in Page Scripts'),
+
+			AdvertisementsPlugin_Configuration::TARGET_DISCUSSION_AFTER =>     T('After First Entry in Discussion'),
+
+			AdvertisementsPlugin_Configuration::TARGET_ASSET_COMMENT_BEFORE => T('Before All Comments'),
+			AdvertisementsPlugin_Configuration::TARGET_ASSET_COMMENT_AFTER =>  T('After All Replies to a Discussion'),
+
+			AdvertisementsPlugin_Configuration::TARGET_ASSET_CONTENT_BEFORE => T('Before Content'),
+			AdvertisementsPlugin_Configuration::TARGET_ASSET_CONTENT_AFTER =>  T('After Content'),
+
+			AdvertisementsPlugin_Configuration::TARGET_ASSET_PANEL_BEFORE =>   T('Top of Panel'),
+			AdvertisementsPlugin_Configuration::TARGET_ASSET_PANEL_AFTER =>    T('Bottom of Panel'),
+
+			AdvertisementsPlugin_Configuration::TARGET_ASSET_FOOTER_AFTER =>   T('Footer'),
+		];
 	}
 
 	private function Render($View, array $Data = array()) {
@@ -22,6 +44,7 @@ class AdvertisementsPlugin_SettingsController {
 			'settings/list',
 			[
 				'Configurations' => $Configurations,
+				'TargetDescriptions' => $this->TargetDescriptions,
 				'EditURLFormat' => $Request->URL(rtrim(AdvertisementsPlugin::SETTINGS_URL, '/') . '/edit/%d'),
 				'DeleteURLFormat' => $Request->URL(rtrim(AdvertisementsPlugin::SETTINGS_URL, '/') . '/delete/%d'),
 				'CreateURL' => $Request->URL(rtrim(AdvertisementsPlugin::SETTINGS_URL, '/') . '/new'),
@@ -96,29 +119,10 @@ class AdvertisementsPlugin_SettingsController {
 			AdvertisementsPlugin_Configuration::ORIENTATION_OTHER => T('Other')
 		];
 
-		$TargetDescriptions = [
-			AdvertisementsPlugin_Configuration::TARGET_NONE =>                 T('Do Not Display'),
-
-			AdvertisementsPlugin_Configuration::TARGET_SCRIPT_HEAD =>          T('Include in Page Scripts'),
-
-			AdvertisementsPlugin_Configuration::TARGET_DISCUSSION_AFTER =>     T('After First Entry in Discussion'),
-
-			AdvertisementsPlugin_Configuration::TARGET_ASSET_COMMENT_BEFORE => T('Before All Comments'),
-			AdvertisementsPlugin_Configuration::TARGET_ASSET_COMMENT_AFTER =>  T('After All Replies to a Discussion'),
-
-			AdvertisementsPlugin_Configuration::TARGET_ASSET_CONTENT_BEFORE => T('Before Content'),
-			AdvertisementsPlugin_Configuration::TARGET_ASSET_CONTENT_AFTER =>  T('After Content'),
-
-			AdvertisementsPlugin_Configuration::TARGET_ASSET_PANEL_BEFORE =>   T('Top of Panel'),
-			AdvertisementsPlugin_Configuration::TARGET_ASSET_PANEL_AFTER =>    T('Bottom of Panel'),
-
-			AdvertisementsPlugin_Configuration::TARGET_ASSET_FOOTER_AFTER =>   T('Footer'),
-		];
-
 		$AvailableTargets = $AdNetwork::GetAvailableTargets();
 
 		$AvailableTargets = array_intersect_key(
-			$TargetDescriptions,
+			$this->TargetDescriptions,
 			array_combine(
 				$AvailableTargets,
 				$AvailableTargets
