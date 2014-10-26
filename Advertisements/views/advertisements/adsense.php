@@ -12,7 +12,7 @@
 		height: <?= htmlentities($Height); ?>
 		"
 	data-ad-client="<?= htmlentities($Configuration->getPublisherIdentifier()); ?>"
-	data-ad-slot="<?= $Configuration->getAdvertisementIdentifier(); ?>"
+	data-ad-slot="<?= htmlentities($Configuration->getAdvertisementIdentifier()); ?>"
 	data-ad-format="<?= htmlentities($Configuration->getOrientation()) ? 'vertical' : 'horizontal'; ?>"
 >
 	<?= $Configuration->getDisabledAdsText(); ?>
