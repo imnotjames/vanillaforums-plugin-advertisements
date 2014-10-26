@@ -1,12 +1,21 @@
 # vanillaforums-plugin-advertisements
 ## Pop-ups, Pop-unders, Flash ads. Ads with sound. Full-screen flash ads.
 
-Make money at your community's expense, and add advertising to your site to rake in all that sweet, sweet sell-out revenue.  Supports advertisements in various places in your forums, including after the first post in a discussion, in the side panel, in the footer, and more.
+Make money at your community's expense, and add advertising to your site to
+rake in all that sweet, sweet sell-out revenue.  Supports advertisements in
+various places in your forums, including after the first post in a
+discussion, in the side panel, in the footer, and more.
 
 Advertising Networks Supported:
 * Google Adsense
 
-Open an issue if your favorite advertising network isn't supported, or if you would like your ads to show up anywhere that isn't supported.
+Open an issue if your favorite advertising network isn't supported, or if you
+would like your ads to show up anywhere that isn't supported.
+
+You know you need this plugin because - let's face it - your business model
+isn't sustainable on its own and you have to pay off those student loans for
+your polisci degree.
+
 
 ### Installation
 
@@ -14,7 +23,9 @@ Plop the `Advertisements` folder into the `plugins/` folder.
 
 ### Configuration
 
-After you've installed the plugin, there will be a menu on the sidebar which you can use to manage the advertisements on your site, found under `Forum Settings`.
+After you've installed the plugin, there will be a menu on the sidebar which
+you can use to manage the advertisements on your site, found under
+`Forum Settings`.
 
 ### License
 
