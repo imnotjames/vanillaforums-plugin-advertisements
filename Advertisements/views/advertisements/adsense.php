@@ -1,7 +1,7 @@
 <?php if(!defined('APPLICATION')) exit(); ?>
 
-<?php $Width = empty($Configuration->GetWidth()) ? 'auto' : intval($Configuration->GetWidth()) . 'px'; ?>
-<?php $Height = empty($Configuration->GetHeight()) ? 'auto' : intval($Configuration->GetHeight()) . 'px'; ?>
+<?php $Width = $Configuration->GetWidth() === 0 ? 'auto' : $Configuration->GetWidth() . 'px'; ?>
+<?php $Height = $Configuration->GetHeight() === 0 ? 'auto' : $Configuration->GetHeight() . 'px'; ?>
 <?php $Orientations = [
 	AdvertisementsPlugin_Configuration::ORIENTATION_VERTICAL => 'vertical',
 	AdvertisementsPlugin_Configuration::ORIENTATION_HORIZONTAL => 'horizontal',
