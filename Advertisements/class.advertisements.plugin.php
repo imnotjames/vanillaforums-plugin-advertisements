@@ -10,7 +10,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'networks' . DIRECTORY_SEPARATOR . 
 $PluginInfo['Advertisements'] = array(
 	'Name' => 'Advertisements',
 	'Description' => 'Adds Advertisements to your forum',
-	'Version' => '0.0.1',
+	'Version' => '0.0.2',
 	'MobileFriendly' => TRUE,
 	'Author' => 'James Ward',
 	'AuthorUrl' => 'https://github.com/imnotjames/vanillaforums-plugin-advertisements',
