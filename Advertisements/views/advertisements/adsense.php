@@ -20,9 +20,8 @@
 	data-ad-client="<?= htmlentities($Configuration->getPublisherIdentifier()); ?>"
 	data-ad-slot="<?= htmlentities($Configuration->getAdvertisementIdentifier()); ?>"
 	data-ad-format="<?= htmlentities($Orientations[$Configuration->getOrientation()]); ?>"
->
-	<?= $Configuration->getDisabledAdsText(); ?>
-</ins>
+	data-disabled-text="<?= htmlentities($Configuration->getDisabledAdsText()); ?>"
+></ins>
 <script type="text/javascript">
 	(function(){
 		var runAdvertisementPluginScript = function() {
@@ -36,6 +35,29 @@
 					return;
 				}
 			}
+
+
+			setTimeout(function() {
+				var advert = document.getElementById(
+					'AdvertisementsPlugin-' +
+					<?= json_encode(intval($Configuration->GetId())); ?>
+				);
+
+				if (!advert || advert.innerHTML.length > 0) {
+					return;
+				}
+
+				var text = advert.attributes['data-disabled-text'].value;
+
+				if (!text || text.length == 0) {
+					return;
+				}
+
+				var adblockerText = document.createElement('div');
+				adblockerText.innerHTML = text;
+
+				advert.parentNode.insertBefore(adblockerText, advert);
+			}, 3000);
 
 			var script = document.createElement('script');
 			script.type = 'text/javascript';
