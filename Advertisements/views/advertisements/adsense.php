@@ -11,6 +11,7 @@
 ?>
 <ins
 	class="adsbygoogle"
+	id="AdvertisementsPlugin-<?= intval($Configuration->GetId()); ?>"
 	style="
 		display: block;
 		width: <?= htmlentities($Width); ?>;
