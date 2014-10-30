@@ -116,7 +116,9 @@ class AdvertisementsPlugin_Configuration {
 	}
 
 	public function SetWidth($Width) {
-		$this->Width = $Width;
+		$Width = intval($Width);
+
+		$this->Width = $Width < 0 ? 0 : $Width;
 	}
 
 	public function GetHeight() {
@@ -124,6 +126,8 @@ class AdvertisementsPlugin_Configuration {
 	}
 
 	public function SetHeight($Height) {
-		$this->Height = $Height;
+		$Height = intval($Height);
+
+		$this->Height = $Height < 0 ? 0 : $Height;
 	}
 }

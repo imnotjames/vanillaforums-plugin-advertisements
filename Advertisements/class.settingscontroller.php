@@ -135,8 +135,8 @@ class AdvertisementsPlugin_SettingsController {
 		$Form->SetValue('Target', $Configuration->GetTarget());
 		$Form->SetValue('Orientation', $Configuration->GetOrientation());
 
-		$Form->SetValue('Width', $Configuration->GetWidth());
-		$Form->SetValue('Height', $Configuration->GetHeight());
+		$Form->SetValue('Width', $Configuration->GetWidth() === 0 ? '' : $Configuration->GetWidth());
+		$Form->SetValue('Height', $Configuration->GetHeight() === 0 ? '' : $Configuration->getHeight());
 
 		$Form->SetValue('DisabledAdsText', $Configuration->GetDisabledAdsText());
 
