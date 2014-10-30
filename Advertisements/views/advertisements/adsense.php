@@ -25,22 +25,30 @@
 </ins>
 <script type="text/javascript">
 	(function(){
-		var adsenseURL = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+		var runAdvertisementPluginScript = function() {
+			var adsenseURL = '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
 
-		var scripts = document.getElementsByTagName('script');
+			var scripts = document.getElementsByTagName('script');
 
-		// If we're already loading this script don't try to load it again
-		for (var i = 0; i < scripts.length; i++) {
-			if (scripts.src == adsenseURL) {
-				return;
+			// If we're already loading this script don't try to load it again
+			for (var i = 0; i < scripts.length; i++) {
+				if (scripts.src == adsenseURL) {
+					return;
+				}
 			}
-		}
 
-		var script = document.createElement('script');
-		script.type = 'text/javascript';
-		script.async = true;
-		script.src = adsenseURL;
-		document.getElementsByTagName('head')[0].appendChild(script);
+			var script = document.createElement('script');
+			script.type = 'text/javascript';
+			script.async = true;
+			script.src = adsenseURL;
+			document.getElementsByTagName('head')[0].appendChild(script);
+		};
+
+		if(window.addEventListener) {
+			window.addEventListener('load', runAdvertisementPluginScript, false);
+		} else {
+			window.attachEvent('onload', runAdvertisementPluginScript);
+		}
 	})();
 
 	(window.adsbygoogle = window.adsbygoogle || []).push({});
