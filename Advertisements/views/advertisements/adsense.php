@@ -20,7 +20,7 @@
 	data-ad-client="<?= htmlentities($Configuration->getPublisherIdentifier()); ?>"
 	data-ad-slot="<?= htmlentities($Configuration->getAdvertisementIdentifier()); ?>"
 	data-ad-format="<?= htmlentities($Orientations[$Configuration->getOrientation()]); ?>"
-	data-disabled-text="<?= htmlentities($Configuration->getDisabledAdsText()); ?>"
+	data-disabled-text="<?= htmlentities(T($Configuration->getDisabledAdsText())); ?>"
 ></ins>
 <script type="text/javascript">
 	(function(){
