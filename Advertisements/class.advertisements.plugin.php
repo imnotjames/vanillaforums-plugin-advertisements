@@ -6,6 +6,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'class.settingscontroller.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'class.publisher.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'networks' . DIRECTORY_SEPARATOR . 'interface.network.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'networks' . DIRECTORY_SEPARATOR . 'class.adsense.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'networks' . DIRECTORY_SEPARATOR . 'class.kontera.php';
 
 $PluginInfo['Advertisements'] = array(
 	'Name' => 'Advertisements',

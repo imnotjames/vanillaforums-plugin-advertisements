@@ -57,6 +57,7 @@ class AdvertisementsPlugin_SettingsController {
 
 		$Networks = [
 			AdvertisementsPlugin_Configuration::NETWORK_ADSENSE => AdvertisementsPlugin_Networks_Adsense::GetNetworkName(),
+			AdvertisementsPlugin_Configuration::NETWORK_KONTERA => AdvertisementsPlugin_Networks_Kontera::GetNetworkName(),
 		];
 
 		if ($Form->AuthenticatedPostBack()) {
@@ -195,6 +196,10 @@ class AdvertisementsPlugin_SettingsController {
 		switch  ($AdNetwork) {
 			case AdvertisementsPlugin_Configuration::NETWORK_ADSENSE:
 				$View = 'settings/edit_adsense';
+				break;
+
+			case AdvertisementsPlugin_Configuration::NETWORK_KONTERA:
+				$View = 'settings/edit_kontera';
 				break;
 
 			default:

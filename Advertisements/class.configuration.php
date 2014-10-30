@@ -2,6 +2,7 @@
 
 class AdvertisementsPlugin_Configuration {
 	const NETWORK_ADSENSE = 'AdvertisementsPlugin_Networks_Adsense';
+	const NETWORK_KONTERA = 'AdvertisementsPlugin_Networks_Kontera';
 
 	const ORIENTATION_AUTOMATIC = 'automatic';
 	const ORIENTATION_VERTICAL = 'vertical';
