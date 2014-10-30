@@ -42,8 +42,6 @@ class AdvertisementsPlugin_Configuration {
 
 	private $Height;
 
-	private $RawHTML;
-
 	public function __construct($AdNetwork, $ID = null) {
 		$this->AdNetwork = $AdNetwork;
 		$this->ID = $ID;
