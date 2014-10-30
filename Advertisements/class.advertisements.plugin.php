@@ -81,6 +81,9 @@ class AdvertisementsPlugin extends Gdn_Plugin {
 	}
 
 	public function SettingsController_Advertisements_Create($Sender, $Section = null) {
+		// This function will exit if the permission fails
+		$Sender->Permission('Garden.Settings.Manage');
+
 		$SettingsController = new AdvertisementsPlugin_SettingsController(
 			new AdvertisementsPlugin_Repository(),
 			function($View, array $Data = []) use ($Sender) {
