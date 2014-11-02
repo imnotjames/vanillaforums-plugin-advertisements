@@ -1,5 +1,18 @@
 <?php if(!defined('APPLICATION')) exit();
 
+$PluginInfo['Advertisements'] = array(
+	'Name' => 'Advertisements',
+	'Description' => 'Adds Advertisements to your forum',
+	'Version' => '0.0.2',
+	'RequiredApplications' => array('Vanilla' => '2.1'),
+	'MobileFriendly' => TRUE,
+	'HasLocale' => FALSE,
+	'SettingsUrl' => '/dashboard/settings/advertisements',
+	'Author' => 'James Ward',
+	'AuthorEmail' => 'james@notjam.es',
+	'AuthorUrl' => 'https://github.com/imnotjames/vanillaforums-plugin-advertisements'
+);
+
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'class.configuration.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'class.repository.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'class.settingscontroller.php';
@@ -7,17 +20,6 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'class.publisher.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'networks' . DIRECTORY_SEPARATOR . 'interface.network.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'networks' . DIRECTORY_SEPARATOR . 'class.adsense.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'networks' . DIRECTORY_SEPARATOR . 'class.kontera.php';
-
-$PluginInfo['Advertisements'] = array(
-	'Name' => 'Advertisements',
-	'Description' => 'Adds Advertisements to your forum',
-	'Version' => '0.0.2',
-	'MobileFriendly' => TRUE,
-	'Author' => 'James Ward',
-	'AuthorUrl' => 'https://github.com/imnotjames/vanillaforums-plugin-advertisements',
-	'SettingsUrl' => '/dashboard/settings/advertisements/',
-	'RequiredApplications' => array('Vanilla' => '2.1'),
-);
 
 class AdvertisementsPlugin extends Gdn_Plugin {
 	const SETTINGS_URL = '/dashboard/settings/advertisements/';
