@@ -3,7 +3,7 @@
 $PluginInfo['Advertisements'] = array(
 	'Name' => 'Advertisements',
 	'Description' => 'Adds Advertisements to your forum',
-	'Version' => '0.0.2',
+	'Version' => '0.0.3',
 	'RequiredApplications' => array('Vanilla' => '2.1'),
 	'MobileFriendly' => TRUE,
 	'HasLocale' => FALSE,
