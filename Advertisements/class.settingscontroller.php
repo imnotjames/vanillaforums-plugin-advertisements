@@ -16,16 +16,16 @@ class AdvertisementsPlugin_SettingsController {
 
 			AdvertisementsPlugin_Configuration::TARGET_SCRIPT_HEAD =>          T('Include in Page Scripts'),
 
-			AdvertisementsPlugin_Configuration::TARGET_DISCUSSION_AFTER =>     T('After First Entry in Discussion'),
+			AdvertisementsPlugin_Configuration::TARGET_DISCUSSION_AFTER =>     T('After First Comment'),
 
 			AdvertisementsPlugin_Configuration::TARGET_ASSET_COMMENT_BEFORE => T('Before All Comments'),
-			AdvertisementsPlugin_Configuration::TARGET_ASSET_COMMENT_AFTER =>  T('After All Replies to a Discussion'),
+			AdvertisementsPlugin_Configuration::TARGET_ASSET_COMMENT_AFTER =>  T('After All Comments'),
 
 			AdvertisementsPlugin_Configuration::TARGET_ASSET_CONTENT_BEFORE => T('Before Content'),
 			AdvertisementsPlugin_Configuration::TARGET_ASSET_CONTENT_AFTER =>  T('After Content'),
 
-			AdvertisementsPlugin_Configuration::TARGET_ASSET_PANEL_BEFORE =>   T('Top of Panel'),
-			AdvertisementsPlugin_Configuration::TARGET_ASSET_PANEL_AFTER =>    T('Bottom of Panel'),
+			AdvertisementsPlugin_Configuration::TARGET_ASSET_PANEL_BEFORE =>   T('Before Side Panel'),
+			AdvertisementsPlugin_Configuration::TARGET_ASSET_PANEL_AFTER =>    T('After Side Panel'),
 
 			AdvertisementsPlugin_Configuration::TARGET_ASSET_FOOTER_AFTER =>   T('Footer'),
 		];
