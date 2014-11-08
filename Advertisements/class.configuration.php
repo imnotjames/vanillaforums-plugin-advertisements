@@ -101,7 +101,7 @@ class AdvertisementsPlugin_Configuration {
 	}
 
 	public function SetOrientation($Orientation) {
-		if (!in_array($Orientation, [ self::ORIENTATION_VERTICAL, self::ORIENTATION_HORIZONTAL, self::ORIENTATION_OTHER ])) {
+		if (!in_array($Orientation, array( self::ORIENTATION_VERTICAL, self::ORIENTATION_HORIZONTAL, self::ORIENTATION_OTHER ))) {
 			$Orientation = self::ORIENTATION_AUTOMATIC;
 		}
 

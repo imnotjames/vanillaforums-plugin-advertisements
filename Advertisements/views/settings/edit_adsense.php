@@ -57,7 +57,7 @@
 			<?= T('Choose the position of the advertisement'); ?>
 		</p>
 
-		<?= $Form->RadioList('Target', $AvailableTargets, [ 'list' => true ]); ?>
+		<?= $Form->RadioList('Target', $AvailableTargets, array( 'list' => true )); ?>
 	</div>
 
 	<div class="LayoutOptions OrientationOptions">
@@ -70,7 +70,7 @@
 			<?= T('It is recommended to leave this set to Automatic.'); ?>
 		</p>
 
-		<?= $Form->RadioList('Orientation', $AvailableOrientations, [ 'list' => true ]); ?>
+		<?= $Form->RadioList('Orientation', $AvailableOrientations, array( 'list' => true )); ?>
 	</div>
 
 	<div class="LayoutOptions DisabledTextOptions">
@@ -82,7 +82,7 @@
 			Text to show when the user has an ad-blocker activated.
 		</p>
 
-		<?= $Form->TextBox('DisabledAdsText', [ 'Multiline' => true ]); ?>
+		<?= $Form->TextBox('DisabledAdsText', array( 'Multiline' => true )); ?>
 	</div>
 
 
@@ -102,7 +102,7 @@
 				</strong>
 			</div>
 
-			<?= $Form->TextBox('Width', [ 'type' => 'number', 'placeholder' => T('Auto') ]); ?> px
+			<?= $Form->TextBox('Width', array( 'type' => 'number', 'placeholder' => T('Auto') )); ?> px
 
 		</div>
 		<div>
@@ -111,14 +111,14 @@
 					<?= $Form->Label('Height'); ?>
 				</strong>
 			</div>
-			<?= $Form->TextBox('Height', [ 'type' => 'number', 'placeholder' => T('Auto') ]); ?> px
+			<?= $Form->TextBox('Height', array( 'type' => 'number', 'placeholder' => T('Auto') )); ?> px
 		</div>
 	</div>
 </div>
 
 <hr />
 
-<?= $Form->Button(T('Save Advertisement'), ['class' => 'Button Submit']); ?>
+<?= $Form->Button(T('Save Advertisement'), array( 'class' => 'Button Submit' )); ?>
 
 <a href="<?= htmlentities($this->Data('CancelURL')); ?>" class="Button">
 	Cancel

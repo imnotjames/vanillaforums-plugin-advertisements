@@ -1,7 +1,7 @@
 <?php if(!defined('APPLICATION')) exit();
 
 class AdvertisementsPlugin_Publisher {
-	private $Subscribers = [];
+	private $Subscribers = array();
 
 	public function FromRepository(AdvertisementsPlugin_Repository $Repository) {
 		$Publisher = new self();
@@ -22,7 +22,7 @@ class AdvertisementsPlugin_Publisher {
 
 	public function Subscribe($Channel, AdvertisementsPlugin_Configuration $Configuration) {
 		if (empty($this->Subscribers[$Channel])) {
-			$this->Subscribers[$Channel] = [];
+			$this->Subscribers[$Channel] = array();
 		}
 
 		$this->Subscribers[$Channel][] = $Configuration;
@@ -30,7 +30,7 @@ class AdvertisementsPlugin_Publisher {
 
 	public function GetSubscribers($Channel) {
 		if (empty($this->Subscribers[$Channel])) {
-			return [];
+			return array();
 		}
 
 		return $this->Subscribers[$Channel];
@@ -43,7 +43,7 @@ class AdvertisementsPlugin_Publisher {
 			return null;
 		}
 
-		$Advertisements = [];
+		$Advertisements = array();
 
 		foreach ($Configurations as $Configuration) {
 			if (empty($Configuration)) {
@@ -66,7 +66,7 @@ class AdvertisementsPlugin_Publisher {
 		ob_start();
 		require implode(
 			DIRECTORY_SEPARATOR,
-			[__DIR__, 'views', 'advertisement_group.php']
+			array( __DIR__, 'views', 'advertisement_group.php' )
 		);
 		return ob_get_clean();
 	}

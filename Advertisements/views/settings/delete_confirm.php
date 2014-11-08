@@ -56,7 +56,7 @@
 
 <hr />
 
-<?= $Form->Button(T('Remove this Advertisement'), ['class' => 'Button Submit']); ?>
+<?= $Form->Button(T('Remove this Advertisement'), array( 'class' => 'Button Submit' )); ?>
 
 <a href="<?= htmlentities($this->Data('CancelURL')); ?>" class="Button">
 	Cancel

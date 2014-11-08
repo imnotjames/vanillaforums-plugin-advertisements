@@ -13,7 +13,7 @@ class AdvertisementsPlugin_Networks_Adsense implements AdvertisementsPlugin_Netw
 	}
 
 	public static function GetAvailableTargets() {
-		return [
+		return array(
 			AdvertisementsPlugin_Configuration::TARGET_NONE,
 
 			AdvertisementsPlugin_Configuration::TARGET_DISCUSSION_AFTER,
@@ -27,7 +27,7 @@ class AdvertisementsPlugin_Networks_Adsense implements AdvertisementsPlugin_Netw
 			AdvertisementsPlugin_Configuration::TARGET_ASSET_PANEL_AFTER,
 
 			AdvertisementsPlugin_Configuration::TARGET_ASSET_FOOTER_AFTER,
-		];
+		);
 	}
 
 	public function GetHTML() {
@@ -36,7 +36,7 @@ class AdvertisementsPlugin_Networks_Adsense implements AdvertisementsPlugin_Netw
 		ob_start();
 		require implode(
 			DIRECTORY_SEPARATOR,
-			[__DIR__, '..', 'views', 'advertisements', 'adsense.php']
+			array( __DIR__, '..', 'views', 'advertisements', 'adsense.php' )
 		);
 		return ob_get_clean();
 	}

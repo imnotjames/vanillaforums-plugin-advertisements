@@ -13,11 +13,11 @@ class AdvertisementsPlugin_Networks_Kontera implements AdvertisementsPlugin_Netw
 	}
 
 	public static function GetAvailableTargets() {
-		return [
+		return array(
 			AdvertisementsPlugin_Configuration::TARGET_NONE,
 
 			AdvertisementsPlugin_Configuration::TARGET_SCRIPT_HEAD
-		];
+		);
 	}
 
 	public function GetHTML() {
@@ -26,7 +26,7 @@ class AdvertisementsPlugin_Networks_Kontera implements AdvertisementsPlugin_Netw
 		ob_start();
 		require implode(
 			DIRECTORY_SEPARATOR,
-			[__DIR__, '..', 'views', 'advertisements', 'kontera.php']
+			array( __DIR__, '..', 'views', 'advertisements', 'kontera.php' )
 		);
 		return ob_get_clean();
 	}

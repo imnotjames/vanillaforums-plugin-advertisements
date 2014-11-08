@@ -2,12 +2,12 @@
 
 <?php $Width = $Configuration->GetWidth() === 0 ? 'auto' : $Configuration->GetWidth() . 'px'; ?>
 <?php $Height = $Configuration->GetHeight() === 0 ? 'auto' : $Configuration->GetHeight() . 'px'; ?>
-<?php $Orientations = [
+<?php $Orientations = array(
 	AdvertisementsPlugin_Configuration::ORIENTATION_AUTOMATIC => 'auto',
 	AdvertisementsPlugin_Configuration::ORIENTATION_VERTICAL => 'vertical',
 	AdvertisementsPlugin_Configuration::ORIENTATION_HORIZONTAL => 'horizontal',
 	AdvertisementsPlugin_Configuration::ORIENTATION_OTHER => 'square'
-	];
+);
 ?>
 <ins
 	class="adsbygoogle"

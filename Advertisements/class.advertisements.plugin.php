@@ -89,7 +89,7 @@ class AdvertisementsPlugin extends Gdn_Plugin {
 
 		$SettingsController = new AdvertisementsPlugin_SettingsController(
 			new AdvertisementsPlugin_Repository(),
-			function($View, array $Data = []) use ($Sender) {
+			function($View, array $Data = array()) use ($Sender) {
 				foreach ($Data as $Field => $Value) {
 					$Sender->SetData($Field, $Value);
 				}

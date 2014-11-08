@@ -17,7 +17,7 @@ class AdvertisementsPlugin_Repository {
 		$Reflect = new ReflectionClass($Configuration);
 		$Properties = $Reflect->getProperties();
 
-		$Array = [];
+		$Array = array();
 
 		foreach ($Properties as $Property) {
 			$Property->SetAccessible(true);
@@ -69,7 +69,7 @@ class AdvertisementsPlugin_Repository {
 	 * @param array $Configurations array of AdvertisementsPlugin_Configuration objects
 	 */
 	private function SaveAdvertisementConfigurations(array $Configurations) {
-		$ConfigurationsArray = [];
+		$ConfigurationsArray = array();
 
 		foreach ($Configurations as $Configuration) {
 			$ConfigurationsArray[] = $this->ToArray($Configuration);
@@ -85,10 +85,10 @@ class AdvertisementsPlugin_Repository {
 	public function GetAdvertisementConfigurations() {
 		$ConfigurationsArray = GDN::Config()->Get(
 			self::CONFIG_KEY,
-			[]
+			array()
 		);
 
-		$Configurations = [];
+		$Configurations = array();
 
 		foreach ($ConfigurationsArray as $ConfigurationArray) {
 			if (!is_array($ConfigurationArray)) {

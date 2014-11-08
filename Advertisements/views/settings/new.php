@@ -26,13 +26,13 @@
 		<?= T('Choose which network this advertisement should be for.'); ?>
 	</p>
 
-	<?= $Form->RadioList('Network', $this->Data('Networks'), [ 'list' => true ]); ?>
+	<?= $Form->RadioList('Network', $this->Data('Networks'), array( 'list' => true )); ?>
 </div>
 
 <hr />
 
 <br />
 
-<?= $Form->Button(T('Create Advertisement'), ['class' => 'Button Submit']); ?>
+<?= $Form->Button(T('Create Advertisement'), array( 'class' => 'Button Submit' )); ?>
 
 <?= $Form->Close(); ?>

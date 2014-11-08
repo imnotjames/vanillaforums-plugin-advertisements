@@ -45,13 +45,13 @@
 			<?= T('Choose the position of the advertisement'); ?>
 		</p>
 
-		<?= $Form->RadioList('Target', $AvailableTargets, [ 'list' => true ]); ?>
+		<?= $Form->RadioList('Target', $AvailableTargets, array( 'list' => true )); ?>
 	</div>
 </div>
 
 <hr />
 
-<?= $Form->Button(T('Save Advertisement'), ['class' => 'Button Submit']); ?>
+<?= $Form->Button(T('Save Advertisement'), array( 'class' => 'Button Submit' )); ?>
 
 <a href="<?= htmlentities($this->Data('CancelURL')); ?>" class="Button">
 	Cancel

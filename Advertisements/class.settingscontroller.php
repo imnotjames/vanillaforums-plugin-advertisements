@@ -11,7 +11,7 @@ class AdvertisementsPlugin_SettingsController {
 		$this->Repository = $Repository;
 		$this->Renderer = $Renderer;
 
-		$this->TargetDescriptions = [
+		$this->TargetDescriptions = array(
 			AdvertisementsPlugin_Configuration::TARGET_NONE =>                 T('Do Not Display'),
 
 			AdvertisementsPlugin_Configuration::TARGET_SCRIPT_HEAD =>          T('Include in Page Scripts'),
@@ -28,7 +28,7 @@ class AdvertisementsPlugin_SettingsController {
 			AdvertisementsPlugin_Configuration::TARGET_ASSET_PANEL_AFTER =>    T('After Side Panel'),
 
 			AdvertisementsPlugin_Configuration::TARGET_ASSET_FOOTER_AFTER =>   T('Footer'),
-		];
+		);
 	}
 
 	private function Render($View, array $Data = array()) {
@@ -42,33 +42,34 @@ class AdvertisementsPlugin_SettingsController {
 
 		$this->Render(
 			'settings/list',
-			[
+			array(
 				'Configurations' => $Configurations,
 				'TargetDescriptions' => $this->TargetDescriptions,
 				'EditURLFormat' => $Request->URL(rtrim(AdvertisementsPlugin::SETTINGS_URL, '/') . '/edit/%d'),
 				'DeleteURLFormat' => $Request->URL(rtrim(AdvertisementsPlugin::SETTINGS_URL, '/') . '/delete/%d'),
 				'CreateURL' => $Request->URL(rtrim(AdvertisementsPlugin::SETTINGS_URL, '/') . '/new'),
-			]
+			)
 		);
 	}
 
 	public function NewAdvertisement(Gdn_Request $Request) {
 		$Form = new Gdn_Form();
 
-		$Networks = [
+		$Networks = array(
 			AdvertisementsPlugin_Configuration::NETWORK_ADSENSE => AdvertisementsPlugin_Networks_Adsense::GetNetworkName(),
 			AdvertisementsPlugin_Configuration::NETWORK_KONTERA => AdvertisementsPlugin_Networks_Kontera::GetNetworkName(),
-		];
+		);
 
 		if ($Form->AuthenticatedPostBack()) {
 			$Form->ValidateRule('Network', 'ValidateRequired');
 			$Form->ValidateRule(
 				'Network',
-				[
+				array(
 					'Name' => 'ValidateEnum',
-					'Args' => (object) [ 'Enum' => array_keys($Networks), 'AllowNull' => true]
-				],
-				T('Must be a Valid Network'));
+					'Args' => (object) array( 'Enum' => array_keys($Networks), 'AllowNull' => true )
+				),
+				T('Must be a Valid Network')
+			);
 
 			$Network = $Form->GetFormValue('Network');
 
@@ -89,10 +90,10 @@ class AdvertisementsPlugin_SettingsController {
 
 		$this->Render(
 			'settings/new',
-			[
+			array(
 				'Form' => $Form,
 				'Networks' => $Networks
-			]
+			)
 		);
 	}
 
@@ -113,12 +114,12 @@ class AdvertisementsPlugin_SettingsController {
 
 		$AdNetwork = $Configuration->getAdNetwork();
 
-		$AvailableOrientations = [
+		$AvailableOrientations = array(
 			AdvertisementsPlugin_Configuration::ORIENTATION_AUTOMATIC => T('Automatic'),
 			AdvertisementsPlugin_Configuration::ORIENTATION_VERTICAL => T('Vertical'),
 			AdvertisementsPlugin_Configuration::ORIENTATION_HORIZONTAL => T('Horizontal'),
 			AdvertisementsPlugin_Configuration::ORIENTATION_OTHER => T('Other')
-		];
+		);
 
 		$AvailableTargets = $AdNetwork::GetAvailableTargets();
 
@@ -145,19 +146,19 @@ class AdvertisementsPlugin_SettingsController {
 			$Form->ValidateRule('Target', 'ValidateRequired');
 			$Form->ValidateRule(
 				'Target',
-				[
+				array(
 					'Name' => 'ValidateEnum',
-					'Args' => (object) [ 'Enum' => array_keys($AvailableTargets), 'AllowNull' => true]
-				],
+					'Args' => (object) array( 'Enum' => array_keys($AvailableTargets), 'AllowNull' => true )
+				),
 				'Must be a valid Target'
 			);
 
 			$Form->ValidateRule(
 				'Orientation',
-				[
+				array(
 					'Name' => 'ValidateEnum',
-					'Args' => (object) [ 'Enum' => array_keys($AvailableOrientations), 'AllowNull' => true]
-				],
+					'Args' => (object) array( 'Enum' => array_keys($AvailableOrientations), 'AllowNull' => true )
+				),
 				'Must be a valid Target'
 			);
 
@@ -165,7 +166,7 @@ class AdvertisementsPlugin_SettingsController {
 			$Form->ValidateRule('Height', 'ValidateInteger');
 
 			if ($Form->ErrorCount() === 0) {
-				$ValidValues = [
+				$ValidValues = array(
 					'PublisherIdentifier',
 					'AdvertisementIdentifier',
 
@@ -176,7 +177,7 @@ class AdvertisementsPlugin_SettingsController {
 					'Height',
 
 					'DisabledAdsText',
-				];
+				);
 
 				$FormValues = array_intersect_key(
 					$Form->FormValues(),
@@ -208,13 +209,13 @@ class AdvertisementsPlugin_SettingsController {
 
 		$this->Render(
 			$View,
-			[
+			array(
 				'Form' => $Form,
 				'Configuration' => $Configuration,
 				'AvailableOrientations' => $AvailableOrientations,
 				'AvailableTargets' => $AvailableTargets,
 				'CancelURL' => $Request->URL(AdvertisementsPlugin::SETTINGS_URL)
-			]
+			)
 		);
 	}
 
@@ -239,11 +240,11 @@ class AdvertisementsPlugin_SettingsController {
 
 		$this->Render(
 			'settings/delete_confirm',
-			[
+			array(
 				'Form' => $Form,
 				'Configuration' => $Configuration,
 				'CancelURL' => $Request->URL(AdvertisementsPlugin::SETTINGS_URL)
-			]
+			)
 		);
 	}
 }
