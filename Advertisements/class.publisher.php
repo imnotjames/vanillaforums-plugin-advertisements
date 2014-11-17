@@ -3,7 +3,7 @@
 class AdvertisementsPlugin_Publisher {
 	private $Subscribers = array();
 
-	public function FromRepository(AdvertisementsPlugin_Repository $Repository) {
+	public static function FromRepository(AdvertisementsPlugin_Repository $Repository) {
 		$Publisher = new self();
 
 		$Configurations = $Repository->GetAdvertisementConfigurations();
