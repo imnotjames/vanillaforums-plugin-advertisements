@@ -4,7 +4,14 @@
  * Repository to save and retrieve Configuration objects
  */
 class AdvertisementsPlugin_Repository {
-	const CONFIG_KEY = 'Plugins.Advertisements.ActiveAds';
+	private $Save;
+
+	private $Load;
+
+	public function __construct(callable $save, callable $load) {
+		$this->Save = $save;
+		$this->Load = $load;
+	}
 
 	/**
 	 * Dehydrate a configuration to an array
@@ -75,18 +82,14 @@ class AdvertisementsPlugin_Repository {
 			$ConfigurationsArray[] = $this->ToArray($Configuration);
 		}
 
-		GDN::Config()->Set(self::CONFIG_KEY, $ConfigurationsArray);
-
-		GDN::Config()->Save();
-
-		clearstatcache();
+		$Save = $this->Save;
+		$Save($ConfigurationsArray);
 	}
 
 	public function GetAdvertisementConfigurations() {
-		$ConfigurationsArray = GDN::Config()->Get(
-			self::CONFIG_KEY,
-			array()
-		);
+		$Load = $this->Load;
+
+		$ConfigurationsArray = $Load();
 
 		$Configurations = array();
 

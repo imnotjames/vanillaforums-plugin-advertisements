@@ -23,13 +23,35 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'networks' . DIRECTORY_SEPARATOR . 
 
 class AdvertisementsPlugin extends Gdn_Plugin {
 	const SETTINGS_URL = '/dashboard/settings/advertisements/';
+	const CONFIG_KEY = 'Plugins.Advertisements.ActiveAds';
+
+	private $repository;
+
+	public function __construct() {
+		$this->repository = new AdvertisementsPlugin_Repository(
+			function(array $Configuration) {
+				GDN::Config()->Set(
+					AdvertisementsPlugin::CONFIG_KEY,
+					$Configuration
+				);
+				GDN::Config()->Save();
+				clearstatcache();
+			},
+			function() {
+				return GDN::Config()->Get(
+					AdvertisementsPlugin::CONFIG_KEY,
+					array()
+				);
+			}
+		);
+	}
 
 	private function GetPublisherSingleton() {
 		static $Publisher;
 
 		if (empty($Publisher)) {
 			$Publisher = AdvertisementsPlugin_Publisher::FromRepository(
-				new AdvertisementsPlugin_Repository()
+				$this->repository
 			);
 		}
 
@@ -88,7 +110,7 @@ class AdvertisementsPlugin extends Gdn_Plugin {
 		$Sender->Permission('Garden.Settings.Manage');
 
 		$SettingsController = new AdvertisementsPlugin_SettingsController(
-			new AdvertisementsPlugin_Repository(),
+			$this->repository,
 			function($View, array $Data = array()) use ($Sender) {
 				foreach ($Data as $Field => $Value) {
 					$Sender->SetData($Field, $Value);
