@@ -1,0 +1,27 @@
+.AdvertisementsPosition {
+	display: inline-block;
+	vertical-align: middle;
+
+	margin-left: 1em;
+	width: 10em;
+
+	text-align: center;
+}
+
+.AdvertisementsPosition img {
+	width: 5em;
+	height: 5em;
+
+	image-rendering: optimizeSpeed;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -o-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: optimize-contrast;
+	-ms-interpolation-mode: nearest-neighbor;
+}
+
+.PositionOptions li {
+	border-bottom: 1px solid #EEE;
+	padding-bottom: 1em;
+	margin-bottom: 1.5em;
+}

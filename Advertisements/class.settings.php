@@ -11,7 +11,7 @@ class AdvertisementsPlugin_Settings {
 		$this->Repository = $Repository;
 		$this->Renderer = $Renderer;
 
-		$this->TargetDescriptions = array(
+		$TargetDescriptions = array(
 			AdvertisementsPlugin_Configuration::TARGET_NONE =>                 T('Do Not Display'),
 
 			AdvertisementsPlugin_Configuration::TARGET_SCRIPT_HEAD =>          T('Include in Page Scripts'),
@@ -29,6 +29,8 @@ class AdvertisementsPlugin_Settings {
 
 			AdvertisementsPlugin_Configuration::TARGET_ASSET_FOOTER_AFTER =>   T('Footer'),
 		);
+
+		$this->TargetDescriptions = $TargetDescriptions;
 	}
 
 	private function Render($View, array $Data = array()) {
@@ -123,8 +125,34 @@ class AdvertisementsPlugin_Settings {
 
 		$AvailableTargets = $AdNetwork::GetAvailableTargets();
 
+		$Descriptions = $this->TargetDescriptions;
+
+		array_walk(
+			$Descriptions,
+			function (&$Value, $Key) use ($Request) {
+				$Alt = $Value;
+
+				$Src = sprintf(
+					'/plugins/Advertisements/design/position/%s.png',
+					str_replace('.', '-', strtolower($Key))
+				);
+
+				$Value = sprintf(
+					'
+						<div class="AdvertisementsPosition">
+							<img src="%1$s" alt="%2$s" />
+							<br />
+							<small>%2$s</small>
+						</div>
+					',
+					htmlentities($Src),
+					htmlentities($Alt)
+				);
+			}
+		);
+
 		$AvailableTargets = array_intersect_key(
-			$this->TargetDescriptions,
+			$Descriptions,
 			array_combine(
 				$AvailableTargets,
 				$AvailableTargets

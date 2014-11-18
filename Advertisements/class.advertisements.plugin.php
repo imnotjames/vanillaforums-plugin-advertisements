@@ -106,6 +106,8 @@ class AdvertisementsPlugin extends Gdn_Plugin {
 	}
 
 	public function SettingsController_Advertisements_Create($Sender, $Section = null) {
+		$Sender->AddCSSFile('plugins/Advertisements/design/settings.css');
+
 		// This function will exit if the permission fails
 		$Sender->Permission('Garden.Settings.Manage');
 
