@@ -1,6 +1,6 @@
 <?php if(!defined('APPLICATION')) exit();
 
-class AdvertisementsPlugin_SettingsController {
+class AdvertisementsPlugin_Settings {
 	private $Repository;
 	private $Renderer;
 

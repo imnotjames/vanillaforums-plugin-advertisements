@@ -15,7 +15,7 @@ $PluginInfo['Advertisements'] = array(
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'class.configuration.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'class.repository.php';
-require_once __DIR__ . DIRECTORY_SEPARATOR . 'class.settingscontroller.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'class.settings.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'class.publisher.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'networks' . DIRECTORY_SEPARATOR . 'interface.network.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'networks' . DIRECTORY_SEPARATOR . 'class.adsense.php';
@@ -109,7 +109,7 @@ class AdvertisementsPlugin extends Gdn_Plugin {
 		// This function will exit if the permission fails
 		$Sender->Permission('Garden.Settings.Manage');
 
-		$SettingsController = new AdvertisementsPlugin_SettingsController(
+		$SettingsController = new AdvertisementsPlugin_Settings(
 			$this->repository,
 			function($View, array $Data = array()) use ($Sender) {
 				foreach ($Data as $Field => $Value) {
