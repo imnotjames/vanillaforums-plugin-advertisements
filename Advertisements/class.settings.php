@@ -7,7 +7,11 @@ class AdvertisementsPlugin_Settings {
 	private $TargetDescriptions;
 
 
-	public function __construct(AdvertisementsPlugin_Repository $Repository, callable $Renderer) {
+	public function __construct(AdvertisementsPlugin_Repository $Repository, $Renderer) {
+		if (!is_callable($Renderer)) {
+			throw new InvalidArgumentException('$Renderer must be an instance of callable');
+		}
+
 		$this->Repository = $Repository;
 		$this->Renderer = $Renderer;
 

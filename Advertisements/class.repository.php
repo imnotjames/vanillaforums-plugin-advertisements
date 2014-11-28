@@ -8,7 +8,15 @@ class AdvertisementsPlugin_Repository {
 
 	private $Load;
 
-	public function __construct(callable $save, callable $load) {
+	public function __construct($save, $load) {
+		if (!is_callable($save)) {
+			throw new InvalidArgumentException('$save must be an instance of callable');
+		}
+
+		if (!is_callable($load)) {
+			throw new InvalidArgumentException('$load must be an instance of callable');
+		}
+
 		$this->Save = $save;
 		$this->Load = $load;
 	}
