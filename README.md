@@ -8,6 +8,7 @@ discussion, in the side panel, in the footer, and more.
 
 Advertising Networks Supported:
 * Google Adsense
+* Kontera
 
 Open an issue if your favorite advertising network isn't supported, or if you
 would like your ads to show up anywhere that isn't supported.
