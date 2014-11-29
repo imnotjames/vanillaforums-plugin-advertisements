@@ -118,7 +118,7 @@ class AdvertisementsPlugin extends Gdn_Plugin {
 					$Sender->SetData($Field, $Value);
 				}
 
-				$Sender->AddSideMenu(self::SETTINGS_URL);
+				$Sender->AddSideMenu(AdvertisementsPlugin::SETTINGS_URL);
 
 				$Sender->Render($View, '', 'plugins/Advertisements');
 			}
