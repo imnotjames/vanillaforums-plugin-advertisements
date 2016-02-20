@@ -22,6 +22,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'networks' . DIRECTORY_SEPARATOR . 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'networks' . DIRECTORY_SEPARATOR . 'class.kontera.php';
 
 class AdvertisementsPlugin extends Gdn_Plugin {
+	const PLUGIN_PATH = '/plugins/Advertisements';
 	const SETTINGS_URL = '/dashboard/settings/advertisements/';
 	const CONFIG_KEY = 'Plugins.Advertisements.ActiveAds';
 
@@ -106,7 +107,7 @@ class AdvertisementsPlugin extends Gdn_Plugin {
 	}
 
 	public function SettingsController_Advertisements_Create($Sender, $Section = null) {
-		$Sender->AddCSSFile('plugins/Advertisements/design/settings.css');
+		$Sender->AddCSSFile(AdvertisementsPlugin::PLUGIN_PATH . '/design/settings.css');
 
 		// This function will exit if the permission fails
 		$Sender->Permission('Garden.Settings.Manage');
@@ -119,8 +120,7 @@ class AdvertisementsPlugin extends Gdn_Plugin {
 				}
 
 				$Sender->AddSideMenu(AdvertisementsPlugin::SETTINGS_URL);
-
-				$Sender->Render($View, '', 'plugins/Advertisements');
+				$Sender->Render($View, '', AdvertisementsPlugin::PLUGIN_PATH);
 			}
 		);
 
@@ -145,7 +145,7 @@ class AdvertisementsPlugin extends Gdn_Plugin {
 				$SettingsController->RemoveAdvertisement($Sender->Request, $ID);
 				break;
 			default:
-				Redirect(self::SETTINGS_URL);
+				Redirect(url(self::SETTINGS_URL));
 		}
 	}
 }

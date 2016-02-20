@@ -137,7 +137,7 @@ class AdvertisementsPlugin_Settings {
 				$Alt = $Value;
 
 				$Src = sprintf(
-					'/plugins/Advertisements/design/position/%s.png',
+					AdvertisementsPlugin::PLUGIN_PATH . '/design/position/%s.png',
 					str_replace('.', '-', strtolower($Key))
 				);
 
