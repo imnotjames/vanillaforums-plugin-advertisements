@@ -4,7 +4,7 @@ $PluginInfo['Advertisements'] = array(
 	'Name' => 'Advertisements',
 	'Description' => 'Adds Advertisements to your forum',
 	'Version' => '0.0.5',
-	'RequiredApplications' => array('Vanilla' => '2.1'),
+	'RequiredApplications' => array('Vanilla' => '2.2'),
 	'MobileFriendly' => TRUE,
 	'HasLocale' => FALSE,
 	'SettingsUrl' => '/dashboard/settings/advertisements',
